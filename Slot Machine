@@ -1,0 +1,53 @@
+using System;
+
+public class slot
+{
+    private int coins;
+
+    public slot()
+    {
+        coins = 0;
+    }
+
+    public void Play()
+    {
+        coins++;
+        Random random = new Random();
+        bool slot1 = random.Next(0, 2) == 0;
+        bool slot2 = random.Next(0, 2) == 0;
+        bool slot3 = random.Next(0, 2) == 0;
+
+        if (slot1 && slot2 && slot3)
+        {
+            Console.WriteLine($"Has ganando {coins} monedas.");
+            coins = 0; 
+            Console.WriteLine();
+        }
+        else
+        {
+            Console.WriteLine("Inténtalo de nuevo.");
+            Console.WriteLine();
+        }
+    }
+}
+
+class Program
+{
+    static void Main(string[] args)
+    {
+        slot machine = new slot();
+        while (true)
+        {
+            Console.WriteLine("Escribe jugar o salir.");
+            string input = Console.ReadLine();
+            if (input.ToLower() == "jugar")
+            {
+                machine.Play();
+            }
+            else
+            {
+                break;
+            }
+        }
+    }
+}
