@@ -1,0 +1,47 @@
+using System;
+
+public class Book
+{
+    public string Title { get; set; }
+    public bool IsRead { get; set; }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+        var books = new Book[] {
+            new Book
+            {
+                Title = "Harry Potter y la piedra filosofal",
+                IsRead = true
+            },
+            new Book
+            {
+                Title = "Canción de hielo y fuego",
+                IsRead = false
+            },
+            new Book
+            {
+                Title = "Devastación",
+                IsRead = true
+            },
+        };
+
+        Console.WriteLine(IsBookRead(books, "Devastación")); // true
+        Console.WriteLine(IsBookRead(books, "Canción de hielo y fuego")); // false
+        Console.WriteLine(IsBookRead(books, "Los Pilares de la Tierra")); // false
+    }
+
+    public static bool IsBookRead(Book[] books, string titleToSearch)
+    {
+        foreach (var book in books)
+        {
+            if (book.Title == titleToSearch)
+            {
+                return book.IsRead;
+            }
+        }
+        return false;
+    }
+}
